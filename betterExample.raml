@@ -1,0 +1,54 @@
+#%RAML 1.0
+title: "Example of type bindings"
+mediaType: application/json
+uses:
+  types: ./typeExtras.raml
+types:
+  Person:
+    properties:
+      id?:
+        type: integer
+        (types.Id):
+        (types.RequiredIn): [ listView, detailsView]
+        (types.DisallowedIn): [ create]
+      name:
+        type: string
+      lastName:
+        type: string
+      friends?:
+        (types.VisibleIn): detailsView
+        type: Person[]
+resourceTypes:
+  collection:
+    get:
+      responses:
+        200:
+          body:
+            (types.Scopes): listView
+            type: <<MemberType>>[]
+    post:
+      body:
+        (types.Scopes): create
+        type: <<MemberType>>
+  item:
+      uriParameters:
+        id:
+          (types.RefersTo): <<Type>>
+          type: number
+      get:
+        responses:
+          200:
+            body:
+              (types.Scopes): detailsView
+              type: <<Type>>
+      put:
+        body:
+          (types.Scopes): update
+          type: <<Type>>
+      delete:
+        responses:
+          200:
+/persons:
+  type:  { collection: {MemberType : Person} }
+  /{id}:
+    type:  { item: {Type : Person} }
