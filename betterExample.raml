@@ -3,6 +3,7 @@ title: "Example of type bindings"
 mediaType: application/json
 uses:
   types: ./typeExtras.raml
+  crud: ./crud.raml
 types:
   Person:
     properties:
@@ -18,37 +19,8 @@ types:
       friends?:
         (types.VisibleIn): detailsView
         type: Person[]
-resourceTypes:
-  collection:
-    get:
-      responses:
-        200:
-          body:
-            (types.Scopes): listView
-            type: <<MemberType>>[]
-    post:
-      body:
-        (types.Scopes): create
-        type: <<MemberType>>
-  item:
-      uriParameters:
-        id:
-          (types.RefersTo): <<Type>>
-          type: number
-      get:
-        responses:
-          200:
-            body:
-              (types.Scopes): detailsView
-              type: <<Type>>
-      put:
-        body:
-          (types.Scopes): update
-          type: <<Type>>
-      delete:
-        responses:
-          200:
+
 /persons:
-  type:  { collection: {MemberType : Person} }
+  type:  { crud.collection: {MemberType : Person} }
   /{id}:
-    type:  { item: {Type : Person} }
+    type:  { crud.item: {Type : Person} }

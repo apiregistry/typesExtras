@@ -1,0 +1,37 @@
+#%RAML 1.0 Library
+uses:
+  types: ./typeExtras.raml
+resourceTypes:
+  collection:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              (types.Scopes): listView
+              type: <<MemberType>>[]
+    post:
+      body:
+        application/json:
+          (types.Scopes): create
+          type: <<MemberType>>
+  item:
+      uriParameters:
+        id:
+          (types.RefersTo): <<Type>>
+          type: number
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                (types.Scopes): detailsView
+                type: <<Type>>
+      put:
+        body:
+          application/json:
+            (types.Scopes): update
+            type: <<Type>>
+      delete:
+        responses:
+          200:
