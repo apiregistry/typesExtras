@@ -1,0 +1,57 @@
+#%RAML 1.0 Library
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+usage: |
+  This library describes a set of annotations to represent oftenly usable
+  extensions to type semantics, the plan is to support this extension in code gen as well
+  as in other tools later.
+annotationTypes:
+    Id:
+      type: nil
+      allowedTargets: TypeDeclaration
+    RequiredIn:
+      type: string | string[]
+      description: defines ids of the scopes where property usage is required
+      allowedTargets: TypeDeclaration
+    DisallowedIn:
+      type: string | string[]
+      description: defines ids of the scopes where property usage is disallowed
+      allowedTargets: TypeDeclaration
+    VisibleIn:
+        type: string | string[]
+        description: states that this property is only visible when certain scopes present
+        allowedTargets: TypeDeclaration
+    Scopes:
+      type: string| string[]
+      allowedTargets: [ TypeDeclaration ]
+    RefersTo:
+        type: Pointer| Pointer[]
+        allowedTargets: [ TypeDeclaration ]
+types:
+  PropertyPointer:
+    type: string
+  TypePointer:
+    type: string
+  Pointer: TypePointer | PropertyPointer
+(commons.Version): 0.0.1
+(commons.Authors):
+  - name: Pavel Petrochenko
+    email: pavel@onpositive.com
+    url: https://github.com/petrochenko-pavel-a
+(commons.Contacts):
+  - name: Pavel Petrochenko
+    email: pavel@onpositive.com
+    url: https://github.com/petrochenko-pavel-a
+(commons.Id): org.aml.common.typesExtensions
+(commons.GroupId): org.aml.core
+(commons.Title): Types extensions
+(commons.License):
+  name: Apache 2.0
+  url: "http://www.apache.org/licenses/LICENSE-2.0"
+(commons.Links):
+  - title: Issues and Suggestions
+    url: "https://github.com/apiregistry/commons/issues"
+    role: issues
+  - title: Project url
+    url: "https://github.com/apiregistry/commons/"
+    role: project
