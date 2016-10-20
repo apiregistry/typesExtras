@@ -28,6 +28,14 @@ annotationTypes:
     RefersTo:
         type: Pointer| Pointer[]
         allowedTargets: [ TypeDeclaration ]
+    enumDescriptions:
+      type: string[]
+      allowedTargets: [ TypeDeclaration ]
+      description: allows to provide human readable descriptions for enum values
+    syntetic:
+      type: boolean
+      allowedTargets: [ TypeDeclaration ]
+      description: allows to mark that type or parameter is syntetic and should be ignored
 types:
   PropertyPointer:
     type: string
