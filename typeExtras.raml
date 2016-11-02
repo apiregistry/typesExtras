@@ -42,6 +42,10 @@ annotationTypes:
         outputToken: "nextToken"
         limitKey: "limit"
         resultKey: "configurationItems"
+    XmlOrder:
+      type: string[]
+      description: This annotation allows to specify order in which properties should be stored in xml
+      allowedTargets: [TypeDeclaration]    
 types:
   TokenBasePagination:
     properties:
@@ -55,6 +59,9 @@ types:
         nextLinkName:
           type: ResponseElementPointer
           description: response element storing url to get next set of results
+  ScopeRefererence:
+      type: string | string[]
+      description: reference to scope name or names, alternativ
   PropertyPointer:
     type: string
   TypePointer:
