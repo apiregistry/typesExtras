@@ -44,15 +44,18 @@ annotationTypes:
 types:
   TokenBasePagination:
     properties:
-      inputToken?: Pointer
-      outputToken?: Pointer
-      limitKey?: Pointer
-      resultKey?: Pointer
+      inputToken?: RequestElementPointer
+      outputToken?: ResponseElementPointer
+      limitKey?: RequestElementPointer
+      resultKey?: ResponseElementPointer
   PropertyPointer:
     type: string
   TypePointer:
     type: string
-  Pointer: TypePointer | PropertyPointer
+  Pointer:
+    type: TypePointer | PropertyPointer
+  RequestElementPointer: string
+  ResponseElementPointer: string
 (commons.Version): 0.0.1
 (commons.Authors):
   - name: Pavel Petrochenko
