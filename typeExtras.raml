@@ -21,6 +21,10 @@ annotationTypes:
         type: string | string[]
         description: states that this property is only visible when certain scopes present
         allowedTargets: TypeDeclaration
+    Readonly:
+      type: boolean
+      description: this is a shortcut marking that property is only visible/exists in situations when data type is used as an output parameter of operation
+      allowedTargets: TypeDeclaration
     Scopes:
       type: string| string[]
       description: scope or set of scopes associated with a given type or property declaration
