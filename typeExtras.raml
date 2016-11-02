@@ -35,7 +35,7 @@ annotationTypes:
     Pagination:
       type: TokenBasePagination
       description: this annotation allows to provide information about pagination mechanism used by Method
-      allowedTargets: [ MethodDeclaration ]
+      allowedTargets: [ Method ]
       example:
         inputToken: "nextToken"
         outputToken: "nextToken"
@@ -44,10 +44,11 @@ annotationTypes:
 types:
   TokenBasePagination:
     properties:
-      inputToken?: RequestElementPointer
-      outputToken?: ResponseElementPointer
+      inputToken?: RequestElementPointer | RequestElementPointer[]
+      outputToken?: ResponseElementPointer | ResponseElementPointer[]
       limitKey?: RequestElementPointer
-      resultKey?: ResponseElementPointer
+      resultKey?: ResponseElementPointer | ResponseElementPointer[]
+      moreResults? : RequestElementPointer
   PropertyPointer:
     type: string
   TypePointer:
