@@ -33,7 +33,7 @@ annotationTypes:
       allowedTargets: [ TypeDeclaration ]
       description: allows to mark that type or parameter is syntetic and should be ignored
     Pagination:
-      type: TokenBasePagination
+      type: TokenBasePagination | NextLinkBasedPagination
       description: this annotation allows to provide information about pagination mechanism used by Method
       allowedTargets: [ Method ]
       example:
@@ -41,9 +41,6 @@ annotationTypes:
         outputToken: "nextToken"
         limitKey: "limit"
         resultKey: "configurationItems"
-    NextLinkPagination:
-      type: NextLinkBasedPagination
-      description: this annotation allows to provide information about pagination mechanism used by Method
 types:
   TokenBasePagination:
     properties:
