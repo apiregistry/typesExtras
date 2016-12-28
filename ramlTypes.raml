@@ -1,0 +1,69 @@
+#%RAML 1.0 Library
+types:
+  RamlTypeLibrary:
+      type: object
+      description: Library containing types and annotation types
+      properties:
+        uses:
+          properties:
+            //: LibraryReference
+        types:
+          properties:
+            //: RamlDataTypeRef
+        annotationTypes:
+          properties:
+            //: RamlDataTypeRef
+  RamlDataType:
+    type: object
+    properties:
+      facets?:
+        type: object
+        properties:
+          //: RamlProperty
+      type: TypeExpression[] | TypeExpression
+      description: string
+      displayName: string
+  RamlProperty:
+    type: RamlDataType
+    properties:
+      required?:
+         type: boolean
+         default: false
+         required: true
+  RamlObjectType:
+    type: RamlDataType
+    properties:
+      discriminator?: string
+      properties?:
+        type: object
+        properties:
+          //: RamlProperty
+      minProperties?: integer
+      maxProperties?: integer
+  RamlArrayType:
+    type: RamlDataType
+    properties:
+      items: RamlDataTypeRef
+      minItems?:
+        required: true
+      maxItems?: integer
+      uniqueItems?: boolean
+  RamlBooleanType:
+    type: RamlDataType
+  RamlStringType:
+    type: RamlDataType
+    properties:
+      pattern?: integer
+      minLength?: integer
+      maxLength?: integer
+      enum?: string[]
+  RamlNumberType:
+    type: RamlDataType
+    properties:
+      minumum?: integer
+      maximum?: integer
+      multipleOf?: number
+      enum?: string[]
+  LibraryReference: string
+  TypeExpression: string
+  RamlDataTypeRef: TypeExpression | RamlDataType
