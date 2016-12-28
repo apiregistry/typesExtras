@@ -14,17 +14,22 @@ types:
         uses:
           description: Libraries used by this library
           properties:
-            //: LibraryReference
+            //:
+              description: Libraries used by this library
+              type: LibraryReference
         types:
           description: Data types declared by this library
           properties:
             //:
               displayName: Types
+              description: Types declared by this library
               type: RamlDataType
         annotationTypes:
           description: Annotation types declared by this library
           properties:
-            //: RamlDataType
+            //: 
+              type: RamlDataType
+              description: Annotation Types declared by this library
   RamlDataType:
     type: object
     displayName: Type
