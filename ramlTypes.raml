@@ -6,7 +6,6 @@ uses:
 usage: This library describes set of raml types
 annotationTypes:
   Library: RamlTypeLibrary
-
 types:
   RamlTypeLibrary:
       type: object
@@ -19,20 +18,26 @@ types:
         types:
           description: Data types declared by this library
           properties:
-            //: RamlDataType
+            //:
+              displayName: Types
+              type: RamlDataType
         annotationTypes:
           description: Annotation types declared by this library
           properties:
             //: RamlDataType
   RamlDataType:
     type: object
+    displayName: Type
     properties:
       facets?:
         type: object
+        description: Facets of this type
         properties:
           //: RamlProperty
       type: TypeExpression[] | TypeExpression
-      description: commons.GitHubFlavoredMarkdown
+      description:
+        type: commons.GitHubFlavoredMarkdown
+        description: Human readable description
       displayName: string
   RamlProperty:
     type: RamlDataType
