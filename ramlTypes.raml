@@ -13,12 +13,15 @@ types:
       description: Library containing types and annotation types
       properties:
         uses:
+          description: Libraries used by this library
           properties:
             //: LibraryReference
         types:
+          description: Data types declared by this library
           properties:
             //: RamlDataTypeRef
         annotationTypes:
+          description: Annotation types declared by this library
           properties:
             //: RamlDataTypeRef
   RamlDataType:
