@@ -1,4 +1,9 @@
 #%RAML 1.0 Library
+uses:
+  commons: https://raw.githubusercontent.com/apiregistry/commons/master/commons.raml
+(commons.Id):  org.aml.ramltypes
+(commons.Title): RAML Types
+usage: This library describes set of raml types
 annotationTypes:
   Library: RamlTypeLibrary
 
@@ -24,7 +29,7 @@ types:
         properties:
           //: RamlProperty
       type: TypeExpression[] | TypeExpression
-      description: string
+      description: commons.GitHubFlavoredMarkdown
       displayName: string
   RamlProperty:
     type: RamlDataType
